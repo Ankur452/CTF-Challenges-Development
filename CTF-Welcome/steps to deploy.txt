@@ -2,7 +2,7 @@ To build the docker image from Dockerfile:
 $ docker build -t ctf-welcome . (where "ctf-welcome" is image name)
 
 To run the Docker image:
-$ docker run -dit --name welcome-app -p 1337:5000 ctf-welcome
+$ docker run -dit --name welcome-app -p 1337:8080 ctf-welcome top
 After this, goto your browser and access the site at http://localhost:1337
 
 To stop the running container:

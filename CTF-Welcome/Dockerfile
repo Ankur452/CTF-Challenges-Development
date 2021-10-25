@@ -1,22 +1,16 @@
-# start from base
-FROM ubuntu:18.04
-
-RUN apt update -y 
-RUN apt install -y git libssl-dev libpam0g-dev zlib1g-dev dh-autoreconf
+FROM golang:1-alpine AS builder
 
 #Creating flag for the Challenge
-RUN cd /home && mkdir Desktop  
+RUN cd /home && mkdir Desktop 
 RUN cd /home/Desktop && echo "CTF{Welcome_To_CTF_2021}" > - 
 
-WORKDIR /
+RUN apk add --no-cache git upx
+RUN CGO_ENBALED=0 go get -ldflags '-w' github.com/yudai/gotty
+RUN mv ${GOPATH}/bin/gotty /bin/ && \
+        upx --brute /bin/gotty
 
-RUN  git clone https://github.com/shellinabox/shellinabox.git && cd shellinabox
+FROM alpine:3.7
 
-RUN  autoreconf -i
+COPY --from=builder /bin/gotty /bin/gotty
 
-RUN  ./configure && make
-
-# Add a new user "carlos" with user id 8877
-RUN useradd -u 8877 carlos
-# Change to non-root privilege
-USER carlos
+ENTRYPOINT ["/bin/gotty"]
