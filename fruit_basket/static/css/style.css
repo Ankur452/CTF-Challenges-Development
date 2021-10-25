@@ -1,12 +1,6 @@
-/* h1 { 
-  color:#93291b; 
-  font-family: 'Raleway',sans-serif; 
-  font-size: 62px; 
-  font-weight: 800; 
-  line-height: 72px; 
-  margin: 0 0 24px; 
-  text-align: center; 
-  text-transform: uppercase; } */
+.submit_form{
+  text-align: center;
+}
 
   h1{
     color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 165px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff;
@@ -41,10 +35,6 @@
 }
 .message{
   text-align: center;
-}
-
-.submit-form {
-  margin: 5px 0px 0 55em;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
